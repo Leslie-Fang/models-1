@@ -12,7 +12,7 @@ from coco_evaluator import CocoEvaluator
 def inference():
     with tf.compat.v1.Session() as sess:
         #path = './test_trained_pb/frozen_inference_graph.pb'
-        path = '../mytunedmodel2/frozen_inference_graph.pb'
+        path = '../mytunedmodel2_freezepb/frozen_inference_graph.pb'
         #path = './models/ssd_mobilenet_v1/frozen_inference_graph.pb'
         #path = './models/ssd_mobilenet_v1/ssdmobilenet_int8_pretrained_model_tr.pb'
         with tf.compat.v1.gfile.FastGFile(path, 'rb') as f:
@@ -32,8 +32,8 @@ def inference():
 
             test_one_image = True
             if test_one_image:
-                #raw_img = cv2.imread('../dataset/download_labelimg/jayz/train/train_001.jpg')
-                raw_img = cv2.imread('../dataset/download_labelimg/jayz/test/test_001.jpg')
+                raw_img = cv2.imread('../dataset/download_labelimg/jayz/train/train_001.jpg')
+                #raw_img = cv2.imread('../dataset/download_labelimg/jayz/test/test_001.jpg')
                 #raw_img = cv2.imread('/home/lesliefang/Kannada-MNIST/objection_detection/caffe/caffe/'
                                      #'examples/images/fish-bike.jpg')
                 #examples / images / fish - bike.jpg
@@ -48,11 +48,20 @@ def inference():
                 num_detections, detected_boxes, detected_scores, detected_classes = \
                     sess.run([num_detections_tensor, detected_boxes_tensor, detected_scores_tensor, detected_labels_tensor], feed_dict={image_tensor: img})
 
+
                 detection = {}
                 num_detections = int(num_detections[0]) # int
+
+                # print(num_detections)
+                # print(np.asarray(detected_boxes[0]))
+                # print(np.asarray(detected_scores[0]))
+                # print(np.asarray(detected_classes[0]))
+
                 detection['boxes'] = np.asarray(detected_boxes[0])[0:num_detections] # (num_detections, 4)
                 detection['scores'] = np.asarray(detected_scores[0])[0:num_detections] # (num_detections)
                 detection['classes'] = np.asarray(detected_classes[0])[0:num_detections] # (num_detections)
+
+                # return
 
                 plotImg(raw_img, num_detections, detection)
 
