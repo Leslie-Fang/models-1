@@ -1,0 +1,6 @@
+filename,width,height,class,xmin,ymin,xmax,ymax
+val_001.jpg,440,440,jayz,57,13,366,411
+val_002.jpg,400,400,jayz,19,4,174,175
+val_003.jpg,484,300,jayz,276,1,388,120
+val_004.jpg,500,333,jayz,214,39,318,164
+val_005.jpg,400,480,jayz,66,2,253,181

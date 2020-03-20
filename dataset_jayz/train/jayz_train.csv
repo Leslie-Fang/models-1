@@ -1,0 +1,6 @@
+filename,width,height,class,xmin,ymin,xmax,ymax
+train_001.jpg,2044,1976,jayz,604,160,1917,1873
+train_002.jpg,500,889,jayz,153,34,381,377
+train_003.jpg,1024,683,jayz,391,106,509,247
+train_004.jpg,427,640,jayz,145,34,374,314
+train_005.jpg,550,358,jayz,159,6,352,207
