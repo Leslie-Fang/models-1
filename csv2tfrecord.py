@@ -34,6 +34,15 @@ def create_tf_example(group, path):
     # print(path)
     # print(group.filename)
     with tf.gfile.GFile(os.path.join(path, '{}'.format(group.filename)), 'rb') as fid:
+
+        file = os.path.join(path, '{}'.format(group.filename))
+        extension = file.split('.')[-1]
+        if extension == 'jpg':
+            #fileLoc = file
+            img = Image.open(file)
+            if img.mode != 'RGB':
+                print("-------------------"+file + ', ' + img.mode)
+
         encoded_jpg = fid.read()
     encoded_jpg_io = io.BytesIO(encoded_jpg)
     image = Image.open(encoded_jpg_io)

@@ -5,8 +5,8 @@ import xml.etree.ElementTree as ET
 
 # os.chdir('/home/lesliefang/Kannada-MNIST/objection_detection/dataset/download_labelimg/jayz/train')
 # path = '/home/lesliefang/Kannada-MNIST/objection_detection/dataset/download_labelimg/jayz/train'
-os.chdir('/home/lesliefang/Kannada-MNIST/objection_detection/dataset/download_labelimg/jayz/val')
-path = '/home/lesliefang/Kannada-MNIST/objection_detection/dataset/download_labelimg/jayz/val'
+os.chdir('/home/lesliefang/Kannada-MNIST/objection_detection/dataset/download_labelimg/jayz/train')
+path = '/home/lesliefang/Kannada-MNIST/objection_detection/dataset/download_labelimg/jayz/train'
 def xml_to_csv(path):
     xml_list = []
     for xml_file in glob.glob(path + '/*.xml'):
@@ -30,7 +30,7 @@ def xml_to_csv(path):
 def main():
     image_path = path
     xml_df = xml_to_csv(image_path)
-    xml_df.to_csv('jayz_val.csv', index=None)
+    xml_df.to_csv('jayz_train.csv', index=None)
     #xml_df.to_csv('jayz_train.csv', index=None)
     print('Successfully converted xml to csv.')
 
