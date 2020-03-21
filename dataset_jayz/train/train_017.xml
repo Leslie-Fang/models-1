@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>train_017.jpg</filename>
+	<path>/home/lesliefang/Kannada-MNIST/objection_detection/dataset/download_labelimg/jayz/train/train_017.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>740</width>
+		<height>456</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>jayz</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>357</xmin>
+			<ymin>22</ymin>
+			<xmax>561</xmax>
+			<ymax>245</ymax>
+		</bndbox>
+	</object>
+</annotation>

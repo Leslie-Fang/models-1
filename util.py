@@ -120,7 +120,7 @@ def plotImg(raw_img, num_detections, detection, need_bbox_trans=True, id_or_name
         # print(new_bbox)
         # print(class_name)
         # print(score)
-        
+
         plt.gca().text(new_bbox[0], new_bbox[1] - 2,
                        '{:s} | {:.3f}'.format(class_name, score),
                        bbox=dict(facecolor='r', alpha=0.5),  # colors[cls_id]

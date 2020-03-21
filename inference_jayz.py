@@ -8,11 +8,12 @@ import matplotlib.pyplot as plt
 from pycocotools.coco import COCO
 from util import plotImg, Dataloader, plotGroundTrueImg
 from coco_evaluator import CocoEvaluator
+from PIL import Image
 
 def inference():
     with tf.compat.v1.Session() as sess:
         #path = './test_trained_pb/frozen_inference_graph.pb'
-        path = '../mytunedmodel2_freezepb/frozen_inference_graph.pb'
+        path = './mytunedmodel2_freezepb/frozen_inference_graph.pb'
         #path = './models/ssd_mobilenet_v1/frozen_inference_graph.pb'
         #path = './models/ssd_mobilenet_v1/ssdmobilenet_int8_pretrained_model_tr.pb'
         with tf.compat.v1.gfile.FastGFile(path, 'rb') as f:
@@ -32,8 +33,18 @@ def inference():
 
             test_one_image = True
             if test_one_image:
-                raw_img = cv2.imread('../dataset/download_labelimg/jayz/train/train_001.jpg')
-                #raw_img = cv2.imread('../dataset/download_labelimg/jayz/test/test_001.jpg')
+
+                file = "./dataset_jayz/test/test_004.jpg"
+                extension = file.split('.')[-1]
+                if extension == 'jpg':
+                    # fileLoc = file
+                    img = Image.open(file)
+                    if img.mode != 'RGB':
+                        print("input is not RGB image -------------------" + file + ', ' + img.mode)
+                        return
+
+                #raw_img = cv2.imread('../dataset/download_labelimg/jayz/train/train_004.jpg')
+                raw_img = cv2.imread(file)
                 #raw_img = cv2.imread('/home/lesliefang/Kannada-MNIST/objection_detection/caffe/caffe/'
                                      #'examples/images/fish-bike.jpg')
                 #examples / images / fish - bike.jpg
@@ -47,7 +58,6 @@ def inference():
                 # detected_classes: the class of each detected BBOX [1, 100] is category id not category name
                 num_detections, detected_boxes, detected_scores, detected_classes = \
                     sess.run([num_detections_tensor, detected_boxes_tensor, detected_scores_tensor, detected_labels_tensor], feed_dict={image_tensor: img})
-
 
                 detection = {}
                 num_detections = int(num_detections[0]) # int

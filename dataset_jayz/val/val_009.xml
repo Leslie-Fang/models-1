@@ -1,0 +1,26 @@
+<annotation>
+	<folder>val</folder>
+	<filename>val_009.jpg</filename>
+	<path>/home/lesliefang/Kannada-MNIST/objection_detection/dataset/download_labelimg/jayz/val/val_009.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>550</width>
+		<height>358</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>jayz</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>161</xmin>
+			<ymin>6</ymin>
+			<xmax>352</xmax>
+			<ymax>208</ymax>
+		</bndbox>
+	</object>
+</annotation>
